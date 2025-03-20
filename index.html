@@ -3,960 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jahachu</title>
+    <title>Coming Soon</title>
     <style>
-        /* Base Styles */
-        :root {
-            --primary-beige: #f5eee6;
-            --secondary-beige: #e8dcca;
-            --dark-beige: #d5c9b6;
-            --gold-accent: #d4af37;
-            --gold-highlight: #f8e9c9;
-            --text-dark: #3c3c3c;
-            --text-light: #6d6d6d;
-            --white: #ffffff;
-            --black: #000000;
-        }
-
+        /* Reset and base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cormorant Garamond', 'Playfair Display', serif;
         }
 
         body {
-            background-color: var(--primary-beige);
-            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FDF3DD; /* Warm beige background */
+            color: #5a4a3f;
             line-height: 1.6;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Typography */
-        h1, h2, h3, h4, h5 {
-            font-weight: 400;
-            letter-spacing: 1px;
+        .container {
+            max-width: 800px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-container {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            max-width: 240px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
         }
 
         h1 {
             font-size: 2.5rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            color: #d6b88e; /* Gold accent color */
+            letter-spacing: 3px;
         }
 
         p {
-            margin-bottom: 1rem;
             font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .cursive {
-            font-style: italic;
+        .accent-text {
+            color: #d6b88e; /* Gold accent color */
+            font-weight: 600;
         }
 
-        .gold-text {
-            color: var(--gold-accent);
-        }
-
-        /* Header */
-        header {
-            background-color: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            color: var(--text-dark);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo span {
-            color: var(--gold-accent);
-            margin-left: 5px;
-        }
-
-        .nav-toggle {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--text-dark);
-            cursor: pointer;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 2rem;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav ul li a:hover {
-            color: var(--gold-accent);
-        }
-
-        nav ul li a::after {
-            content: '';
+        .background-shape {
             position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--gold-accent);
-            transition: width 0.3s;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('/api/placeholder/1200/800') center/cover;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            z-index: 1;
-            max-width: 800px;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--gold-accent);
-            color: var(--white);
-            text-decoration: none;
-            border: none;
-            border-radius: 2px;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover {
-            background-color: #c09a30;
-            transform: translateY(-2px);
-        }
-
-        /* Featured Collection */
-        .featured {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .featured h2 {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-            margin-bottom: 3rem;
-        }
-
-        .featured h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 2px;
-            background-color: var(--gold-accent);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .collection-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .collection-item {
-            background-color: var(--white);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .collection-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .collection-img {
-            height: 300px;
-            background: url('/api/placeholder/600/600') center/cover;
-            position: relative;
-        }
-
-        .collection-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--gold-accent);
-            color: var(--white);
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            border-radius: 2px;
-        }
-
-        .collection-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .collection-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .collection-price {
-            color: var(--gold-accent);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .collection-desc {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-        }
-
-        /* About Section */
-        .about {
-            padding: 5rem 2rem;
-            background-color: var(--secondary-beige);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .about-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .about-content {
-            flex: 1;
-            min-width: 300px;
-            padding-right: 3rem;
-        }
-
-        .about-image {
-            flex: 1;
-            min-width: 300px;
-            height: 500px;
-            background: url('/api/placeholder/800/1000') center/cover;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .about h2 {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .about h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 2px;
-            background-color: var(--gold-accent);
-            bottom: 0;
-            left: 0;
-        }
-
-        /* Testimonials */
-        .testimonials {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .testimonials h2 {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-            margin-bottom: 3rem;
-        }
-
-        .testimonials h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 2px;
-            background-color: var(--gold-accent);
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .testimonial-item {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .testimonial-item::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 15px;
-            font-size: 5rem;
-            color: var(--gold-highlight);
-            font-family: Georgia, serif;
-            line-height: 1;
-            opacity: 0.5;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--gold-accent);
-        }
-
-        .testimonial-location {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Newsletter */
-        .newsletter {
-            padding: 4rem 2rem;
-            background-color: var(--dark-beige);
-            text-align: center;
-        }
-
-        .newsletter-container {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .newsletter h3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .newsletter p {
-            margin-bottom: 2rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            min-width: 250px;
-            padding: 12px 15px;
-            border: none;
-            border-radius: 2px;
-            font-size: 1rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--text-dark);
-            color: var(--white);
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            display: block;
-            color: var(--white);
-        }
-
-        .footer-logo span {
-            color: var(--gold-accent);
-        }
-
-        .footer-col h4 {
-            color: var(--gold-accent);
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-            display: inline-block;
-        }
-
-        .footer-col h4::after {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 2px;
-            background-color: var(--gold-accent);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-col ul li a {
-            text-decoration: none;
-            color: var(--white);
-            transition: color 0.3s;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--gold-accent);
-            padding-left: 5px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
+            background: radial-gradient(circle, rgba(214, 184, 142, 0.1) 0%, rgba(214, 184, 142, 0.02) 70%);
         }
 
-        .social-icon:hover {
-            background-color: var(--gold-accent);
+        .shape1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: var(--gold-accent);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 1000;
-        }
-
-        .back-to-top.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Media Queries */
-        @media (max-width: 992px) {
-            .about-content {
-                padding-right: 0;
-                margin-bottom: 2rem;
-            }
+        .shape2 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
         }
 
         @media (max-width: 768px) {
-            .header-container {
-                padding: 0 1rem;
-            }
-
-            .nav-toggle {
-                display: block;
-            }
-
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background-color: var(--white);
-                transition: right 0.3s;
-                z-index: 1001;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-            }
-
-            nav.active {
-                right: 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 5rem 2rem 2rem;
-            }
-
-            nav ul li {
-                margin: 1rem 0;
-            }
-
-            .overlay {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0, 0, 0, 0.5);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s;
-                z-index: 1000;
-            }
-
-            .overlay.active {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .collection-grid,
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
             h1 {
                 font-size: 2rem;
             }
 
-            h2 {
-                font-size: 1.75rem;
+            p {
+                font-size: 1rem;
             }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .newsletter-form input,
-            .newsletter-form .btn {
-                width: 100%;
+            .logo {
+                max-width: 200px;
             }
         }
 
-        /* French Decorative Elements */
-        .decorative-divider {
-            text-align: center;
-            padding: 1rem 0;
-            position: relative;
-        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
 
-        .decorative-divider::before,
-        .decorative-divider::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 30%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold-accent), transparent);
-        }
+            h1 {
+                font-size: 1.8rem;
+            }
 
-        .decorative-divider::before {
-            left: 0;
-        }
-
-        .decorative-divider::after {
-            right: 0;
-        }
-
-        .decorative-symbol {
-            display: inline-block;
-            font-size: 1.5rem;
-            color: var(--gold-accent);
-            margin: 0 1rem;
-        }
-
-        .elegant-border {
-            border: 1px solid var(--gold-accent);
-            position: relative;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .elegant-border::before,
-        .elegant-border::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-color: var(--gold-accent);
-        }
-
-        .elegant-border::before {
-            top: -5px;
-            left: -5px;
-            border-top: 2px solid;
-            border-left: 2px solid;
-        }
-
-        .elegant-border::after {
-            bottom: -5px;
-            right: -5px;
-            border-bottom: 2px solid;
-            border-right: 2px solid;
+            .logo {
+                max-width: 160px;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">Jahachu</span></a>
-            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-            <nav>
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Collections</a></li>
-                    <li><a href="#">Bagues</a></li>
-                    <li><a href="#">Colliers</a></li>
-                    <li><a href="#">Notre Histoire</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <div class="overlay"></div>
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Élégance Intemporelle</h1>
-            <p class="cursive">Des diamants d'exception pour des moments inoubliables</p>
-            <a href="#" class="btn">Découvrir la Collection</a>
-        </div>
-    </section>
-
-    <!-- Featured Collection -->
-    <section class="featured">
-        <h2>Collection Signature</h2>
-        <p>Explorez notre sélection de pièces exceptionnelles, façonnées avec la plus grande attention aux détails par nos artisans joailliers.</p>
-
-        <div class="collection-grid">
-            <!-- Item 1 -->
-            <div class="collection-item">
-                <div class="collection-img">
-                    <div class="collection-badge">Nouveau</div>
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-title">Bague Diamant</h3>
-                    <div class="collection-price">€4,250</div>
-                    <p class="collection-desc">Diamant taille brillant, serti sur or blanc 18 carats.</p>
-                    <a href="#" class="btn">Voir détails</a>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="collection-item">
-                <div class="collection-img">
-                    <div class="collection-badge">Exclusif</div>
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-title">Collier de Diamants</h3>
-                    <div class="collection-price">€5,800</div>
-                    <p class="collection-desc">Pendentif en diamants sur chaîne en or rose 18 carats.</p>
-                    <a href="#" class="btn">Voir détails</a>
-                </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="collection-item">
-                <div class="collection-img"></div>
-                <div class="collection-info">
-                    <h3 class="collection-title">Bague d'Éternité</h3>
-                    <div class="collection-price">€3,950</div>
-                    <p class="collection-desc">Alliance diamants ronds sur or blanc 18 carats.</p>
-                    <a href="#" class="btn">Voir détails</a>
-                </div>
+    <div class="container">
+        <div class="logo-container">
+            <div class="logo">
+                <!-- Replace with your logo -->
+                <img src="Logo_Jahachu.png" alt="Logo" id="logo-image">
             </div>
         </div>
 
-        <div class="decorative-divider">
-            <span class="decorative-symbol">✧</span>
-        </div>
-    </section>
+        <h1>COMING SOON</h1>
 
-    <!-- About Section -->
-    <section class="about">
-        <div class="about-container">
-            <div class="about-content">
-                <h2>Test</h2>
-                <p>Test: Jahachu ist super</p>
-                <a href="#" class="btn">...</a>
-            </div>
-            <div class="about-image"></div>
-        </div>
-    </section>
+        <p>We're crafting something <span class="accent-text">special</span> for you. Our boutique is currently under construction, but we're working hard to bring you a unique shopping experience featuring carefully curated pieces that blend elegance with modern sensibilities.</p>
+    </div>
 
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <h2>Témoignages</h2>
-        <div class="testimonial-grid">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-item">
-                <p class="testimonial-text">Alles Super.</p>
-                <div class="testimonial-author">Test</div>
-                <div class="testimonial-location">Test</div>
-            </div>
-
-            <!-- Testimonial 2 -->
-            <div class="testimonial-item">
-                <p class="testimonial-text">Alles Super.</p>
-                <div class="testimonial-author">Test</div>
-                <div class="testimonial-location">Test</div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-item">
-                <p class="testimonial-text">Alles Super.</p>
-                <div class="testimonial-author">Test</div>
-                <div class="testimonial-location">Test</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-        <div class="newsletter-container">
-            <h3>Restez Informé</h3>
-            <p>Inscrivez-vous à notre newsletter pour découvrir en avant-première nos nouvelles collections et événements exclusifs.</p>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Votre adresse email" required>
-                <button type="submit" class="btn">S'inscrire</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <a href="#" class="footer-logo">Jahachu</span></a>
-                <p>Excellence et élégance.</p>
-                <div class="social-icons">
-                    <a href="#" class="social-icon">f</a>
-                    <a href="#" class="social-icon">in</a>
-                    <a href="#" class="social-icon">p</a>
-                    <a href="#" class="social-icon">ig</a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>Collections</h4>
-                <ul>
-                    <li><a href="#">Bagues de Fiançailles</a></li>
-                    <li><a href="#">Alliances</a></li>
-                    <li><a href="#">Colliers</a></li>
-                    <li><a href="#">Bracelets</a></li>
-                    <li><a href="#">Pièces Uniques</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Information</h4>
-                <ul>
-                    <li><a href="#">À Propos</a></li>
-                    <li><a href="#">Nos Boutiques</a></li>
-                    <li><a href="#">Service Client</a></li>
-                    <li><a href="#">Entretien des Bijoux</a></li>
-                    <li><a href="#">Guide des Diamants</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li>25 Place Vendôme, 75001 Paris</li>
-                    <li>+33 (0)1 42 60 XX XX</li>
-                    <li>contact@jahachu.de</li>
-                    <li>Lun-Sam: 10h-19h</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="copyright">
-            &copy; 2025 Jahachu. Tous droits réservés.
-        </div>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top">↑</a>
-
-    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Navigation
-            const navToggle = document.querySelector('.nav-toggle');
-            const nav = document.querySelector('nav');
-            const overlay = document.querySelector('.overlay');
-
-            navToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-                overlay.classList.toggle('active');
-                document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
-            });
-
-            overlay.addEventListener('click', function() {
-                nav.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-
-            // Back to Top Button
-            const backToTopButton = document.querySelector('.back-to-top');
-
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset > 300) {
-                    backToTopButton.classList.add('show');
-                } else {
-                    backToTopButton.classList.remove('show');
-                }
-            });
-
-            backToTopButton.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-
-            // Smooth Scrolling for Navigation Links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-
-                    if (href !== '#') {
-                        e.preventDefault();
-                        const target = document.querySelector(href);
-                        if (target) {
-                            target.scrollIntoView({ behavior: 'smooth' });
-
-                            // Close mobile nav if open
-                            if (nav.classList.contains('active')) {
-                                nav.classList.remove('active');
-                                overlay.classList.remove('active');
-                                document.body.style.overflow = '';
-                            }
-                        }
-                    }
-                });
-            });
-
-            // Newsletter Form Submission (placeholder)
-            const newsletterForm = document.querySelector('.newsletter-form');
-
-            if (newsletterForm) {
-                newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = this.querySelector('input[type="email"]').value;
-
-                    // Validation and submission logic would go here
-                    alert('Merci pour votre inscription! '
+        // Handle the placeholder image
+        const logoImage = document.getElementById("logo-image");
+        logoImage.onerror = function() {
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='80' viewBox='0 0 200 80'%3E%3Crect width='200' height='80' fill='%23f9f6f0'/%3E%3Ctext x='50%' y='50%' font-family='Arial' font-size='14' text-anchor='middle' dominant-baseline='middle' fill='%23d6b88e'%3ELogo%3C/text%3E%3C/svg%3E";
+        };
+    </script>
+</body>
+</html>
